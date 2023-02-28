@@ -1,0 +1,70 @@
+<div class="form-container">
+    <form class="add-form">
+
+        <div class="form-control">
+            <label for="task-id"></label>
+            <input type="text" id="task-id" readonly [(ngModel)]="task.id" name="id">
+            <input type="button" value="Generate ID" (click)="generateId()">
+        </div>
+
+        <div class="form-control">
+            <label for="task-title">Task: </label>
+            <input 
+            type="text"
+            name="task-title"
+            id="task-title"
+            placeholder="Your task"
+            name="title" [(ngModel)]="task.title"
+            />
+        </div>
+
+        <div class="form-control">
+            <label for="task-description">Task Description: </label>
+            <textarea 
+            name="task-description"
+            id="task-description"
+            cols="30"
+            rows="10"
+            name="description" [(ngModel)]="task.description"
+        ></textarea>*
+        </div>
+    
+        <div class="form-control">
+            <label for="dueDate">Due Time:</label>
+            <input 
+            type="date"
+            name="dueDate"
+            id="dueDate"
+            placeholder="Add Day & Time"
+            name="dueDate"
+            [(ngModel)]="task.dueDate"
+             />*
+        </div>
+
+        <div class="form-control">
+            <label for="task-location">Where?: </label>
+            <input 
+            type="text"
+            name="task-location"
+            id="task-location"
+            placeholder="Add Task"
+            name="location" [(ngModel)]="task.location"
+             />*
+        </div>
+        <input 
+        type="button" 
+        value="Add Task" 
+        class="btn btn-block" 
+        (click)="addTask()"
+        />
+
+        <input 
+        type="button" 
+        value="Edit Task" 
+        class="btn btn-block" 
+        (click)="editTask()"
+        />
+
+        <small>*optional</small>
+    </form>
+</div>

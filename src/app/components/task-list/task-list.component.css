@@ -1,0 +1,50 @@
+.task-item{
+    position: relative;
+    margin: 1rem auto;
+    padding: .5rem;
+    width: 50%;
+    background-color: lightblue;
+    border-radius: .5rem;
+}
+
+.task-id{
+    font-size: .8rem;
+    padding: .25rem;
+}
+
+.task-title,
+.task-description,
+.task-time{
+    font-family: sans-serif;
+    padding: .5rem;
+}
+
+.task-description{
+    border-radius: 10px 10px 0 0;
+}
+
+.task-time{
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    gap: 1rem;
+
+}
+
+.task-description,
+.task-time{
+    background-color: whitesmoke;
+}
+
+.task-id::before{
+    content: '#';
+}
+
+.delete{
+    position: absolute;
+    top: 3%;
+    right: 1%;
+    font-size: 1.2rem;
+    padding: 2px 7px;
+    border: none;
+    border-radius: 50%;
+}
