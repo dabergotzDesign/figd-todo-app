@@ -1,6 +1,6 @@
 <div class="form-container">
-    <form class="add-form">
-
+    <h2>Add Something To Do</h2>
+    <form class="add-form" [ngClass]="status ? '' : 'hidden'">
         <div class="form-control">
             <label for="task-id"></label>
             <input type="text" id="task-id" readonly [(ngModel)]="task.id" name="id">
@@ -67,4 +67,5 @@
 
         <small>*optional</small>
     </form>
+    <button id="form-hide" (click)="hideForm()">&#8964;</button>
 </div>

@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
+
+  status: Boolean = false;
   
   task: Task = {
     id: 0,
@@ -47,6 +49,18 @@ export class TaskFormComponent {
       taskId = this.task;
     //}
 
+  }
+
+  hideForm(){
+    
+    this.status = !this.status;
+    let hideBtn = document.getElementById("form-hide") as HTMLButtonElement;
+    if(this.status){
+      hideBtn.style.transform = 'rotate(180deg)';
+    }else{
+      hideBtn.style.transform = 'rotate(0deg)';
+    }
+    console.log("hide");
   }
 
   /* getDate(event: Event, isStart: boolean){
