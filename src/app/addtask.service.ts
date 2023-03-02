@@ -16,17 +16,21 @@ export class AddtaskService {
 
   getTasks(): Observable<Task[]>{
       const response = this.httpClient.get<Task[]>(this.tasksURL);
+      console.log(response);
       return response;
   } 
 
   getTaskByID(id: number): Observable<Task>{
     const response = this.httpClient.get<Task>(this.tasksURL + '/' + id);
-    return response;
-    
+    return response;    
   }
 
   addNewTask(task: Task): Observable<Task>{
     const response = this.httpClient.post<Task>(this.tasksURL, task);
+
+    console.log('addNewTask response: ',response);
+    console.log('addNewTask task: ',task);
+
     return response;
   }
 

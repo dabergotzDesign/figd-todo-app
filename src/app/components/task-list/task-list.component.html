@@ -3,8 +3,9 @@
     <h3 class="task-title">{{ task.title }}</h3>
     <p class="task-description">{{ task.description }}</p>
     <div class="task-time">
-        <div>Due to: {{ task.dueDate }},</div>
+        <div>Due to: {{ task.dueDate | date: "dd.MM.y" }},</div>
         <div>Location: {{ task.location}}</div>
     </div>
+    <a routerLink="/edit/{{ task.id }}" class="edit">🖉</a>
     <button class="delete" (click)="delete(task)">&times;</button>
 </div>

@@ -5,3 +5,7 @@
     box-sizing: border-box;
 }
 
+app-task-list{
+    display: flex;
+    flex-flow: column-reverse nowrap;
+}

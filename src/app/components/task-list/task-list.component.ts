@@ -15,7 +15,6 @@ constructor(private addTaskService: AddtaskService){}
 
   ngOnInit(){
     this.addTaskService.getTasks().subscribe((res) =>{
-      console.log(res);
       this.task = res;
     });
   }

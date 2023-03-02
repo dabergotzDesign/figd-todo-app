@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 
 
 import { InMemoryDataService } from './in-memory-data.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { InMemoryDataService } from './in-memory-data.service';
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot([]),
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

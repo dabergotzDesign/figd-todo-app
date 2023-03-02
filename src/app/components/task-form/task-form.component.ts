@@ -3,7 +3,6 @@ import { Task } from 'src/app/task';
 import { AddtaskService } from 'src/app/addtask.service';
 //import { Tasklist } from 'src/app/mock-list';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Tasklist } from 'src/app/mock-list';
 
 @Component({
   selector: 'app-task-form',
@@ -11,18 +10,21 @@ import { Tasklist } from 'src/app/mock-list';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
-  constructor(private addTaskService: AddtaskService){}
+  constructor(private addTaskService: AddtaskService, private router: Router, private activatedRoute: ActivatedRoute){}
+
+  //private router: Router, private activatedRoute: ActivatedRoute
 
   status: Boolean = false;
 
-  /* ngOnInit(){
-    if(this.router.url == '/'){
+  ngOnInit(){
+    if(this.router.url != '/add'){
       const taskID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
       this.addTaskService.getTaskByID(taskID).subscribe((res)=>{
+        console.log("getTaskByID: ", res);
         this.task = res;
-      });
-    }    
-  } */
+      });   
+    }
+  }
   
   task: Task = {
     id: 0,
@@ -32,19 +34,26 @@ export class TaskFormComponent {
     location: 'add location',
   }
 
+  
+  /* Bug - ngModel überschreibt erstellten Task */
+
+  //save()
+  addTask(): void{
+      //Tasklist.push(this.task);
+      this.addTaskService.addNewTask(this.task).subscribe((result) => {
+        console.log('addTask-res',result);
+      });
+      this.router.navigate(['tasks']);
+      
+  };
+
+
   generateId(): void{
     let rndID: number = Math.floor(Math.random() * 9999)+1;
     let taskId = document.getElementById("task-id") as HTMLInputElement;
     taskId.value = rndID.toString();
     this.task.id = rndID;
   }
-
-  /* Bug - ngModel überschreibt erstellten Task */
-
-  addTask(): void{
-      //Tasklist.push(this.task);
-      this.addTaskService.addNewTask(this.task).subscribe();
-  };
 
 
   hideForm(){
@@ -56,7 +65,6 @@ export class TaskFormComponent {
     }else{
       hideBtn.style.transform = 'rotate(0deg)';
     }
-    console.log("hide");
   }
 
   /* getDate(event: Event, isStart: boolean){
