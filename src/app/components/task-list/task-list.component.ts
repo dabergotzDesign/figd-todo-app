@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Tasklist } from 'src/app/mock-list';
+//import { Tasklist } from 'src/app/mock-list';
+import { AddtaskService } from 'src/app/addtask.service';
 import { Task } from 'src/app/task';
 
 @Component({
@@ -8,10 +9,19 @@ import { Task } from 'src/app/task';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent {
-  task= Tasklist;
+constructor(private addTaskService: AddtaskService){}
 
-  delete(Task: Task): void {
-    const index = Tasklist.indexOf(Task);
-    Tasklist.splice(index, 1);
+  task: Task[] = [];
+
+  ngOnInit(){
+    this.addTaskService.getTasks().subscribe((res) =>{
+      console.log(res);
+      this.task = res;
+    });
+  }
+
+  delete(task: Task): void {
+    this.addTaskService.delete(task).subscribe();
+    this.task = this.task.filter((item) => item !== task)
   }
 }

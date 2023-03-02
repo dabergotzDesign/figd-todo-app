@@ -31,6 +31,12 @@ label{
 
 .form-control{
     margin: 1rem;
+    font-family: sans-serif;
+}
+
+.form-control:nth-of-type(3){
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .btn{
@@ -41,18 +47,22 @@ label{
 
 #form-hide{
     display: block;
-    padding: .1rem .5rem .5rem .5rem;
-    border: 2px solid lightgreen;
     margin: auto ;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: bold;
-    border-radius: 50%;
+    color: whitesmoke;
+    text-shadow: 0 0 2px #111;
+    border: none;
+    background-color: dimgray;
+    padding-bottom: .6rem;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    border-radius: .5rem;
 }
 
 #form-hide:hover{
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: 1px 1px .5px #11111185;
 }
 
 small{

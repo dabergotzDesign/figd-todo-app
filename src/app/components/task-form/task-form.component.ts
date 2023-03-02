@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Task } from 'src/app/task';
-import { Tasklist } from 'src/app/mock-list';
+import { AddtaskService } from 'src/app/addtask.service';
+//import { Tasklist } from 'src/app/mock-list';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Tasklist } from 'src/app/mock-list';
 
 @Component({
   selector: 'app-task-form',
@@ -9,8 +11,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
+  constructor(private addTaskService: AddtaskService){}
 
   status: Boolean = false;
+
+  /* ngOnInit(){
+    if(this.router.url == '/'){
+      const taskID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      this.addTaskService.getTaskByID(taskID).subscribe((res)=>{
+        this.task = res;
+      });
+    }    
+  } */
   
   task: Task = {
     id: 0,
@@ -30,26 +42,10 @@ export class TaskFormComponent {
   /* Bug - ngModel überschreibt erstellten Task */
 
   addTask(): void{
-    /* let taskId = Tasklist.find((item)=> item.id == this.task.id);
-    if(taskId == null || taskId == undefined){ */
-      Tasklist.push(this.task);
-      
-    /* } else{
-      taskId = this.task;
-    } */
-
-  }
-
-  editTask(): void{
-    let taskId = Tasklist.find((item)=> item.id == this.task.id);
-    //if(taskId == null || taskId == undefined){
       //Tasklist.push(this.task);
-      
-    //} else{
-      taskId = this.task;
-    //}
+      this.addTaskService.addNewTask(this.task).subscribe();
+  };
 
-  }
 
   hideForm(){
     
